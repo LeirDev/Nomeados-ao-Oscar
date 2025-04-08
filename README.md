@@ -7,7 +7,7 @@ Abaixo, algumas atividades para trabalharmos.
 --- 
 
 * Atualize os registros da tabela com os dados do Oscar 2025
-
+  Dados atualizados e inseridos no banco de dados.
 ---
 
 * Qual o **total** de registros na tabela indicados?

@@ -20,6 +20,7 @@ db.registros.countDocument()
 ```
 
 R: 11004
+
 ---
 
 * Qual o número de indicações por categoria agrupadas por categoria?

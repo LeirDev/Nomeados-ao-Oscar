@@ -14,6 +14,12 @@ Abaixo, algumas atividades para trabalharmos.
 
 * Qual o **total** de registros na tabela indicados?
 
+Q: 
+```js
+db.registros.countDocument()
+```
+
+R: 11004
 ---
 
 * Qual o número de indicações por categoria agrupadas por categoria?

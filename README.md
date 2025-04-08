@@ -56,6 +56,14 @@ Q:
 
 * Quantos Oscars Natalie Portman ganhou?
 
+R: 1 oscar
+
+Q:
+```js
+ db.registros.find({
+"nome_do_indicado": "Natalie Portman", "vencedor": "true"
+})
+```
 ---
 
 * Quantas vezes Viola Davis foi indicada ao Oscar?

@@ -67,24 +67,58 @@ Q:
 ---
 
 * Quantas vezes Viola Davis foi indicada ao Oscar?
+  
+R: 4 vezes
 
+Q:
+```js
+ db.oscar.find({"Nome": "Natalie Portman"}).countDocuments()
+```
 ---
 
 * Quantos Oscars Viola Davis ganhou?
 
+R: 1 vez
+
+Q:
+```js
+ db.registros.countDocuments({"nome_do_indicado": "Viola Davis", "vencedor": "true"})
+```
 ---
 
 * Amy Adams já ganhou algum Oscar?
 
+R: 1 vez
+
+Q:
+```js
+ db.registros.countDocuments({"nome_do_indicado": "Viola Davis", "vencedor": "true"})
+```
 ---
 
 * Quais os atores/atrizes que foram indicados mais de uma vez?
 
-Obs: Utilizar a função COUNT e GROUP BY, e a função HAVING para filtrar os registros que possuem mais de uma indicação. 
+R:
+Q: comando para saber quantos foram indicados mais de uma vez:
+```js
+ db.registros.aggregate([
+  { $group: { _id: "$nome_do_indicado", total_indicacoes: { $sum: 1 } } },
+  { $match: { total_indicacoes: { $gt: 1 } } },
+  { $count: "quantidade_atores_mais_uma_indicacao" }
+])
+``` 
 
+Q: Comando para saber nome e quantidade dos atores indicados mais de uma vez:
+```js
+ db.registros.aggregate([
+  { $group: { _id: "$nome_do_indicado", total_indicacoes: { $sum: 1 } } },
+  { $match: { total_indicacoes: { $gt: 1 } } }
+])
+``` 
 ---
 
 * A série de filmes Toy Story ganhou Oscars em quais anos?
+
 
 ---
 

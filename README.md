@@ -8,7 +8,7 @@ Abaixo, algumas atividades para trabalharmos.
 
 * Atualize os registros da tabela com os dados do Oscar 2025
   
-  R: Dados atualizados e inseridos no banco de dados.
+R: Dados atualizados e inseridos no banco de dados.
   
 ---
 
@@ -119,15 +119,47 @@ Q: Comando para saber nome e quantidade dos atores indicados mais de uma vez:
 
 * A série de filmes Toy Story ganhou Oscars em quais anos?
 
+R: Duas vezes em 2011 e uma vez em 2020
+
+Q:
+```js
+ db.registros.find({
+nome_do_filme: /Toy Story/,
+vencedor: "true"
+})
+``` 
 
 ---
 
-* A partir de que ano que a categoria "Actress" deixa de existir? 
+* A partir de que ano que a categoria "Actress" deixa de existir?
+
+R: 
+
+Q:
+```js
+ db.registros.find({
+categoria: "ACTRESS" ,
+vencedor: "true"
+}).sort({
+ano_cerimonia: 1
+})
+``` 
 
 ---
 
 * Quem ganhou o primeiro Oscar para Melhor Atriz? Em que ano?
 
+R: Janet Gaynor no ano de 1928
+
+Q:
+```js
+ db.registros.find({
+categoria: "ACTRESS" ,
+vencedor: "true"
+}).sort({
+ano_cerimonia: 1
+})
+``` 
 ---
 
 * Na campo "Vencedor", altere todos os valores com "true" para 1 e todos os valores "false" para 0.
@@ -148,6 +180,7 @@ Q: Comando para saber nome e quantidade dos atores indicados mais de uma vez:
 
 * Denzel Washington já ganhou algum Oscar?
 
+
 ---
 
 * Quais os filmes que ganharam o Oscar de Melhor Filme?
@@ -156,6 +189,14 @@ Q: Comando para saber nome e quantidade dos atores indicados mais de uma vez:
 
 * Sidney Poitier foi o primeiro ator negro a ser indicado ao Oscar. Em que ano ele foi indicado? Por qual filme?
 
+R: Ele foi indicado primeiramente em 1959 no filme The Defiant Ones
+
+Q:
+```js
+ db.registros.find({
+nome_do_indicado: "Sidney Poitier"
+})
+``` 
 ---
 
 * Quais os filmes que ganharam o Oscar de Melhor Filme e Melhor Diretor na mesma cerimonia?

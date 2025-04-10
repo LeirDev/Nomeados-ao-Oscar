@@ -229,24 +229,24 @@ vencedor: 1
 * Quais os filmes que ganharam o Oscar de Melhor Filme?
 
 R: 
-Going My Way
-The Lost Weekend
-The Best Years of Our Lives
-Gentleman's Agreement
-Hamlet
-All the King's Men
-All about Eve
-An American in Paris
-The Greatest Show on Earth
-From Here to Eternity
-On the Waterfront
-Marty
-Around the World in 80 Days
-The Bridge on the River Kwai
-Gigi
-Ben-Hur
-The Apartment
-West Side Story
+Going My Way,
+The Lost Weekend,
+The Best Years of Our Lives,
+Gentleman's Agreement,
+Hamlet,
+All the King's Men,
+All about Eve,
+An American in Paris,
+The Greatest Show on Earth,
+From Here to Eternity,
+On the Waterfront,
+Marty,
+Around the World in 80 Days,
+The Bridge on the River Kwai,
+Gigi,
+Ben-Hur,
+The Apartment,
+West Side Story.
 
 Q:
 ```js

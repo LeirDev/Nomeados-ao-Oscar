@@ -14,11 +14,11 @@ R: Dados atualizados e inseridos no banco de dados.
 
 * Qual o **total** de registros na tabela indicados?
 
-R: 11004
+R: 11009
 
 Q: 
 ```js
-db.registros.countDocument()
+db.registros.countDocuments()
 ```
 ---
 

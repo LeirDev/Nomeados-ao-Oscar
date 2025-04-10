@@ -133,7 +133,7 @@ vencedor: "true"
 
 * A partir de que ano que a categoria "Actress" deixa de existir?
 
-R: 
+R: Em 1976
 
 Q:
 ```js
@@ -142,7 +142,7 @@ categoria: "ACTRESS" ,
 vencedor: "true"
 }).sort({
 ano_cerimonia: 1
-})
+}).limit(1)
 ``` 
 
 ---
@@ -164,27 +164,103 @@ ano_cerimonia: 1
 
 * Na campo "Vencedor", altere todos os valores com "true" para 1 e todos os valores "false" para 0.
 
+R: Dados atualizados
+
+Q:
+```js
+db.registros.updateMany(
+  { vencedor: "true" },
+  { $set: { vencedor: 1 } }
+);
+
+db.registros.updateMany(
+  { vencedor: "false" },
+  { $set: { vencedor: 0 } }
+);
+``` 
+
 ---
 
 * Em qual edição do Oscar "Crash" concorreu ao Oscar?
+
+R: Na edição 78
+
+Q:
+```js
+db.registros.find({
+nome_do_filme: "Crash"
+})
+``` 
 
 ---
 
 * O filme Central do Brasil aparece no Oscar?
 
+R: Não aparece
+
+Q:
+```js
+db.registros.find({
+nome_do_filme: "Central do Brasil"
+})
+``` 
+
 ---
 
-* Inclua no banco 3 filmes que nunca foram nem nomeados ao Oscar, mas que merecem ser. 
+* Inclua no banco 3 filmes que nunca foram nem nomeados ao Oscar, mas que merecem ser.
+
+R:  
 
 ---
 
 * Denzel Washington já ganhou algum Oscar?
 
+R: Sim ele ganhou dois oscars
 
+Q:
+```js
+db.registros.countDocuments({
+"nome_do_indicado": "Denzel Washington",
+vencedor: 1
+});
+``` 
 ---
 
 * Quais os filmes que ganharam o Oscar de Melhor Filme?
 
+R: 
+Going My Way
+The Lost Weekend
+The Best Years of Our Lives
+Gentleman's Agreement
+Hamlet
+All the King's Men
+All about Eve
+An American in Paris
+The Greatest Show on Earth
+From Here to Eternity
+On the Waterfront
+Marty
+Around the World in 80 Days
+The Bridge on the River Kwai
+Gigi
+Ben-Hur
+The Apartment
+West Side Story
+
+Q:
+```js
+db.registros.find(
+  {
+    categoria: "BEST MOTION PICTURE", 
+    vencedor: 1 
+  },
+  {
+    nome_do_filme: 1, 
+    _id: 0 
+  }
+)
+``` 
 ---
 
 * Sidney Poitier foi o primeiro ator negro a ser indicado ao Oscar. Em que ano ele foi indicado? Por qual filme?

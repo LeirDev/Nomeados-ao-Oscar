@@ -209,7 +209,44 @@ nome_do_filme: "Central do Brasil"
 
 * Inclua no banco 3 filmes que nunca foram nem nomeados ao Oscar, mas que merecem ser.
 
-R:  
+R: Dados atualizados
+
+Q:
+```js
+[
+    {
+        "id_registro": 1,
+        "ano_filmagem": 2004,
+        "ano_cerimonia": null,
+        "cerimonia": null,
+        "categoria": "MELHOR FILME DE ANIMAÇÃO",
+        "nome_do_indicado": "Cory Edwards, Todd Edwards, Tony Leech",
+        "nome_do_filme": "Deu a Louca na Chapeuzinho",
+        "vencedor": false
+    },
+    {
+        "id_registro": 2,
+        "ano_filmagem": 2003,
+        "ano_cerimonia": null,
+        "cerimonia": null,
+        "categoria": "MELHOR FILME DE COMEDIA",
+        "nome_do_indicado": "Keenen Ivory Wayans",
+        "nome_do_filme": "As Branquelas",
+        "vencedor": false
+    },
+    {
+        
+        "id_registro": 3,
+        "ano_filmagem": 1999,
+        "ano_cerimonia": null,
+        "cerimonia": null,
+        "categoria": "MELHOR FILME DE ANIMAÇÃO",
+        "nome_do_indicado": "Nick Park, Peter Lord",
+        "nome_do_filme": "A Fuga das Galinhas",
+        "vencedor": false   
+    }
+]
+``` 
 
 ---
 
@@ -277,6 +314,60 @@ nome_do_indicado: "Sidney Poitier"
 
 * Quais os filmes que ganharam o Oscar de Melhor Filme e Melhor Diretor na mesma cerimonia?
 
+R: Gentleman's Agreement,
+Marty,
+The Lost Weekend,
+The Bridge on the River Kwai,
+The Apartment,
+From Here to Eternity,
+All about Eve,
+The Best Years of Our Lives,
+West Side Story,
+Ben-Hur,
+On the Waterfront,
+Gigi,
+Going My Way
+
+Q:
+```js
+db.registros.aggregate(
+    { $match: { categoria: { $in: ["BEST MOTION PICTURE", "DIRECTING"] }, vencedor: 1 } },
+    { $group: { _id: { cerimonia: "$cerimonia", filme: "$nome_do_filme" }, categorias: { $addToSet: "$categoria" } } },
+    { $match: { categorias: { $all: ["BEST MOTION PICTURE", "DIRECTING"] } } },
+);
+``` 
 ---
 
 * Denzel Washington e Jamie Foxx já concorreram ao Oscar no mesmo ano?
+
+R: Os dois não concorreram ao oscar no mesmo ano segundo o banco de dados
+
+Q:
+```js
+db.registros.aggregate([
+  {
+    $match: {
+      nome_do_indicado: { $in: ["Denzel Washington", "Jamie Foxx"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$ano_cerimonia",
+      indicados: { $addToSet: "$nome_do_indicado" }
+    }
+  },
+  {
+    $match: {
+      indicados: { $all: ["Denzel Washington", "Jamie Foxx"] }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      ano_cerimonia: "$_id",
+      indicados: 1
+    }
+  }
+]);
+```
+

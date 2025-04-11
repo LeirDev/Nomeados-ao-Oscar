@@ -343,6 +343,12 @@ db.registros.aggregate(
 R: Os dois não concorreram ao oscar no mesmo ano segundo o banco de dados
 
 Q:
+
+```js
+db.backup.find({ nome_do_indicado: "Denzel Washington" })
+db.backup.find({ nome_do_indicado: "Jamie Foxx" })
+```
+
 ```js
 db.registros.aggregate([
   {

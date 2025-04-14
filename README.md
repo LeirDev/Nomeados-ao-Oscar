@@ -24,21 +24,13 @@ db.registros.countDocuments()
 
 * Qual o número de indicações por categoria agrupadas por categoria?
 
-R: 2
 
 Q:
 ```js
-db.indicados_ao_oscar.aggregate([
-  {
-    $group: {
-      _id: "$categoria",  
-      total_indicacoes: { $sum: 1 }  
-    }
-  },
-  {
-    $sort: { total_indicacoes: -1 } 
-  }
-]);
+db.registros.aggregate([
+  { $group: { _id: "$categoria", totalIndicacoes: { $sum: 1 } } },
+  { $sort: { totalIndicacoes: -1 } }
+])
 ```
 
 ---
@@ -49,7 +41,7 @@ R: 3 vezes
 
 Q:
 ```js
- db.oscar.find({"Nome": "Natalie Portman"}).countDocuments()
+ db.registros.find({"Nome": "Natalie Portman"}).countDocuments()
 ```
 
 ---
@@ -72,7 +64,7 @@ R: 4 vezes
 
 Q:
 ```js
- db.oscar.find({"Nome": "Natalie Portman"}).countDocuments()
+ db.registros.find({"Nome": "Natalie Portman"}).countDocuments()
 ```
 ---
 
@@ -345,8 +337,8 @@ R: Os dois não concorreram ao oscar no mesmo ano segundo o banco de dados
 Q:
 
 ```js
-db.backup.find({ nome_do_indicado: "Denzel Washington" })
-db.backup.find({ nome_do_indicado: "Jamie Foxx" })
+db.registros.find({ nome_do_indicado: "Denzel Washington" })
+db.registros.find({ nome_do_indicado: "Jamie Foxx" })
 ```
 
 ```js

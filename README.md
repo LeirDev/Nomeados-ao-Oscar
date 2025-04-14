@@ -125,7 +125,7 @@ vencedor: "true"
 
 * A partir de que ano que a categoria "Actress" deixa de existir?
 
-R: Em 1976
+R: Em 1928
 
 Q:
 ```js

@@ -84,7 +84,7 @@ R: 1 vez
 
 Q:
 ```js
- db.registros.countDocuments({"nome_do_indicado": "Viola Davis", "vencedor": "true"})
+ db.registros.countDocuments({"nome_do_indicado": "Amy Adams", "vencedor": "true"})
 ```
 ---
 

@@ -91,7 +91,7 @@ Q:
 * Quais os atores/atrizes que foram indicados mais de uma vez?
 
 R:
-Q: comando para saber quantos foram indicados mais de uma vez:
+Q: comando para saber quantos foram indicados:
 ```js
  db.registros.aggregate([
   { $group: { _id: "$nome_do_indicado", total_indicacoes: { $sum: 1 } } },

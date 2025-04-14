@@ -41,7 +41,7 @@ R: 3 vezes
 
 Q:
 ```js
- db.registros.find({"Nome": "Natalie Portman"}).countDocuments()
+ db.registros.find({nome_do_indicado: "Natalie Portman"}).countDocuments()
 ```
 
 ---
@@ -64,7 +64,7 @@ R: 4 vezes
 
 Q:
 ```js
- db.registros.find({"Nome": "Natalie Portman"}).countDocuments()
+ db.registros.find({nome_do_indicado: "Natalie Portman"}).countDocuments()
 ```
 ---
 

@@ -1,6 +1,6 @@
 # Nomeados ao Oscar
 
-Contém a base de indicados ao Oscar em formato SQL para treinar comandos CRUD. 
+Contém a base de indicados ao Oscar em formato noSQL para treinar comandos MongoDB shell. 
 
 Abaixo, algumas atividades para trabalharmos.
 
